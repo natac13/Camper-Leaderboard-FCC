@@ -1,0 +1,1 @@
+import promiseMiddleware from 'redux-promise';
