@@ -7,7 +7,14 @@ import {
     REQUEST_DATA,
 } from '../constants/';
 
-const camperData = (state = Map(), action) => {
+const initialState = fromJS({
+    camperList: [],
+    theme: {
+        color: '#369'
+    }
+});
+
+const camperData = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_LIST:
             return state.set('camperList', fromJS(action.payload));

@@ -8,26 +8,29 @@ import {
 import request from '../app/js/request';
 
 describe('The Store', () => {
-    describe('Redux-promise middleware', () => {
-        let store;
-        beforeEach(() => {
-            store = configureStore();
+
+
+    let store;
+    beforeEach(() => {
+        store = configureStore();
+    });
+
+    it('should have an initial state that is just a Map', () => {
+        const state = store.getState();
+        expect(state).to.be.instanceof(Map);
+    });
+
+    it('should handle a createList action', () => {
+        const action = createList(request());
+        expect(store.getState().get('camperList')).to.equal(List());
+
+        const p = store.dispatch(action);
+        return p.then(() => {
+            return expect(Promise.resolve(store.getState().get('camperList').size)).to.eventually.become(100);
+
+
         })
 
-        it('should handle a createList action', (done) => {
-            const action = createList(request());
-            const state = fromJS({
-                camperList: []
-            });
-            const nextState = store.dispatch(action);
-            nextState.then(data => {
-                console.log(data);
-                done()
-                return data;
-            }
-            );
-
-
-        });
     });
+
 });
