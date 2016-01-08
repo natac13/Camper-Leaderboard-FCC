@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import { Map, fromJS } from 'immutable';
-import fetch from 'isomorphic-fetch'
 
 // describe('Application Login', () => {
 //     describe('Fetching data', () => {

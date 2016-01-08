@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import { Map, fromJS, List } from 'immutable';
-import fetch from 'isomorphic-fetch';
 
 import {
     CREATE_LIST,
