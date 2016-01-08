@@ -7,10 +7,10 @@ import {
     REQUEST_DATA,
 } from '../constants/';
 
-const camperData = (state = List(), action) => {
+const camperData = (state = Map(), action) => {
     switch (action.type) {
         case CREATE_LIST:
-            return fromJS(action.data);
+            return state.set('camperList', fromJS(action.payload));
         default:
             return state;
     }

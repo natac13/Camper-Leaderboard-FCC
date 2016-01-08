@@ -8,7 +8,18 @@ import {
     DATA_FAILED
 } from '../constants/';
 
-export const createList = createAction(CREATE_LIST, data => data, () => true );
+/**
+ * createList :: String a -> Object b
+ * take in a string and returns an action object that would look like
+ * {
+ *     type: CREATE_LIST,
+ *     payload: {
+ *         the argument passed when calling createList
+ *     }
+ * }
+ * @type {[type]}
+ */
+export const createList = createAction(CREATE_LIST);
 
 export function requestData()  {
     return {
