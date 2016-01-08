@@ -1,16 +1,52 @@
 import React, { Component, PropTypes } from 'react';
+import CamperList from '../../components/camperList/';
 
-export default class App extends Component {
+import request from '../../js/request';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as ActionCreators from '../../actions/';
+
+function mapStateToProps(state) {
+    const { camperData, theme } = state;
+    return {
+        camperData,
+        theme
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(ActionCreators, dispatch),
+        dispatch
+    };
+}
+
+class App extends Component {
 
     constructor(props) {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.actions.createList(request());
+
+    }
+
     render() {
         return (
-            <div className="">
-
+            <div>
+                <header>
+                    <h1> Top Camper Chart </h1>
+                    <h3> By Natac </h3>
+                </header>
+                <CamperList {...this.props} />
             </div>
         );
     }
 }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);

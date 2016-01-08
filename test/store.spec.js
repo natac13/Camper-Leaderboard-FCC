@@ -15,18 +15,20 @@ describe('The Store', () => {
         store = configureStore();
     });
 
-    it('should have an initial state that is just a Map', () => {
+    it('should have an initial state that is just an Object with a camperData and theme keys', () => {
         const state = store.getState();
-        expect(state).to.be.instanceof(Map);
+        expect(state).to.be.instanceof(Object);
+        expect(state.camperData).to.be.instanceof(List);
+        expect(state.theme).to.be.instanceof(Map)
     });
 
     it('should handle a createList action', () => {
         const action = createList(request());
-        expect(store.getState().get('camperList')).to.equal(List());
+        expect(store.getState().camperData).to.equal(List());
 
         const p = store.dispatch(action);
         return p.then(() => {
-            return expect(Promise.resolve(store.getState().get('camperList').size)).to.eventually.become(100);
+            return expect(Promise.resolve(store.getState().camperData.size)).to.eventually.become(100);
 
 
         })

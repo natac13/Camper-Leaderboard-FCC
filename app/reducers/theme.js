@@ -1,20 +1,17 @@
 import { Map, fromJS, List } from 'immutable';
 
 import {
-    CREATE_LIST,
-    DATA_SUCCESS,
-    DATA_FAILED
+    SET_THEME
 } from '../constants/';
 
 
-
-const camperData = (state = List(), action) => {
+const theme = (state = Map(), action) => {
     switch (action.type) {
-        case CREATE_LIST:
+        case SET_THEME:
             return fromJS(action.payload);
         default:
             return state;
     }
 };
 
-export default camperData;
+export default theme;
