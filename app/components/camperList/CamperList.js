@@ -8,8 +8,12 @@ import style from './style';
 export default class CamperList extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            list: 'allTime'
+        };
         console.log(this.props);
-        this.generateRows = this.generateRows.bind(this);
+        this.generateTableData = this.generateTableData.bind(this);
+        this.orderList    = this.orderList.bind(this);
     }
 
     componentDidUpdate() {
@@ -17,11 +21,16 @@ export default class CamperList extends Component {
 
     }
 
-
-    generateRows() {
-        return this.props.camperData.map((camper, index) => {
+    /**
+     * Will generate the data for the table, determined by the period param
+     * which is either 'allTime', or 'recent'
+     * @param  {Strine} period
+     * @return {JSX}
+     */
+    generateTableData(period) {
+        return this.props.camperData.getIn(['camperList', period]).map((camper, index) => {
             return (
-                <tr>
+                <tr key={index}>
                     <td>{++index}</td>
                     <td>{camper.get('username')}</td>
                     <td>{camper.get('alltime')}</td>
@@ -31,12 +40,16 @@ export default class CamperList extends Component {
         });
     }
 
-    orderNames() {
-        console.log('this should be an action to reorder the store state');
+    orderList(period) {
+        const { actions } = this.props;
+        console.log(actions);
+        this.setState({
+            list: period
+        });
+
     }
 
     render() {
-        const { actions } = this.props;
         return (
             <div className={style.wrapper}>
                 <table className={style.leaderBoard}>
@@ -45,29 +58,28 @@ export default class CamperList extends Component {
                     </caption>
                     <thead>
                         <tr>
-                            <th >
-                            Rank
+                            <th>
+                                Rank
+                            </th>
+                            <th
+                                className={style.dataTitle}>
+                                Camper
                             </th>
                             <th
                                 className={style.dataTitle}
-                                onClick={this.orderNames.bind(this)}>
-                            Camper
+                                onClick={() => this.orderList('allTime')}>
+                                Alltime - Browniepoints
                             </th>
                             <th
                                 className={style.dataTitle}
-                                onClick={actions.orderAlltime}>
-                            Alltime - Browniepoints
-                            </th>
-                            <th
-                                className={style.dataTitle}
-                                onClick={this.orderNames.bind(this)}>
-                            Last 30 days - Browniepoints
+                                onClick={() => this.orderList('recent')}>
+                                Last 30 days - Browniepoints
                             </th>
                         </tr>
 
                     </thead>
                     <tbody>
-                        {this.generateRows()}
+                        {this.state.list == 'recent' ? this.generateTableData('recent') : this.generateTableData('allTime')}
                     </tbody>
                 </table>
 

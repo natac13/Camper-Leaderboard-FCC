@@ -23,6 +23,6 @@ export const createListAllTime = createAction(CREATE_LIST_ALLTIME);
 export const createListRecent = createAction(CREATE_LIST_RECENT);
 export const dataSuccess = createAction(DATA_SUCCESS);
 export const dataFail = createAction(DATA_FAILED);
-export const orderAlltime = createAction(ORDER_ALLTIME);
+export const orderAllTime = createAction(ORDER_ALLTIME);
 
 

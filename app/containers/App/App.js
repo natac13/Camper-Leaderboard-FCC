@@ -30,7 +30,10 @@ class App extends Component {
 
     componentWillMount() {
         this.props.actions.createListAllTime(request('alltime'));
+    }
 
+    componentDidMount() {
+        this.props.actions.createListRecent(request('recent'));
     }
 
     render() {
