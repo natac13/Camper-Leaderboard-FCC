@@ -11,13 +11,11 @@ export default class CamperList extends Component {
         this.state = {
             list: 'allTime'
         };
-        console.log(this.props);
         this.generateTableData = this.generateTableData.bind(this);
         this.orderList    = this.orderList.bind(this);
     }
 
     componentDidUpdate() {
-        console.log(this.props);
 
     }
 
@@ -32,7 +30,12 @@ export default class CamperList extends Component {
             return (
                 <tr key={index} className={style.userRow}>
                     <td className={style.rank}>{++index}</td>
-                    <td className={style.username}>{camper.get('username')}</td>
+                    <td className={style.username}>
+                        <img
+                            src={camper.get('img')}
+                            className={style.avatar} />
+                            {camper.get('username')}
+                    </td>
                     <td className={style.points}>{camper.get('alltime')}</td>
                     <td className={style.points}>{camper.get('recent')}</td>
                 </tr>
