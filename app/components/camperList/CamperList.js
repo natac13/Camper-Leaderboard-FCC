@@ -30,11 +30,11 @@ export default class CamperList extends Component {
     generateTableData(period) {
         return this.props.camperData.getIn(['camperList', period]).map((camper, index) => {
             return (
-                <tr key={index}>
-                    <td>{++index}</td>
-                    <td>{camper.get('username')}</td>
-                    <td>{camper.get('alltime')}</td>
-                    <td>{camper.get('recent')}</td>
+                <tr key={index} className={style.userRow}>
+                    <td className={style.rank}>{++index}</td>
+                    <td className={style.username}>{camper.get('username')}</td>
+                    <td className={style.points}>{camper.get('alltime')}</td>
+                    <td className={style.points}>{camper.get('recent')}</td>
                 </tr>
             );
         });
@@ -42,7 +42,6 @@ export default class CamperList extends Component {
 
     orderList(period) {
         const { actions } = this.props;
-        console.log(actions);
         this.setState({
             list: period
         });
@@ -60,7 +59,8 @@ export default class CamperList extends Component {
                     </caption>
                     <thead>
                         <tr>
-                            <th>
+                            <th
+                                className={style.dataTitle}>
                                 Rank
                             </th>
                             <th

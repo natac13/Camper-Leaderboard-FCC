@@ -2,6 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import CamperList from '../../components/camperList/';
 
 import request from '../../js/request';
+import style from './style';
+/*========================================
+=            Redux connection            =
+========================================*/
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -22,6 +26,10 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
+
+/*=====  End of Redux connection  ======*/
+
+
 class App extends Component {
 
     constructor(props) {
@@ -38,10 +46,10 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className={style.wrapper}>
                 <header>
-                    <h1> Top Camper Chart </h1>
-                    <h3> By Natac </h3>
+                    <h1 className={style.author}> Create By: Natac </h1>
+                    <h3 className={style.code}> Source Code </h3>
                 </header>
                 <CamperList {...this.props} />
             </div>

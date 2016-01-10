@@ -8,7 +8,7 @@ const store = configureStore();
 
 /*** Application ***/
 import App from './containers/App/';
-
+import './scss/setup.scss';
 /*===========================================
 =            Immutable Dev tools            =
 ===========================================*/

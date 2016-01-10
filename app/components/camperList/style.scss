@@ -1,3 +1,19 @@
+$oddRow: #C4E6E3;
+$hoverOdd: darken($oddRow, 8%);
+$evenRow: #E6D2C4;
+$hoverEven: darken($evenRow, 8%);
+
+$heading-color: #66633D;
+$heading-complement: complement($heading-color);
+
+.leaderBoard,
+.dataTitle,
+.rank,
+.username,
+.points {
+  border: 1px solid black;
+}
+
 .wrapper {
   display: flex;
   justify-content: space-around;
@@ -6,17 +22,68 @@
 .leaderBoard {
   align-self: center;
   border-collapse: collapse;
+  border-radius: 10px;
+  font-family: 'Geo', sans-serif;
+
 
   .tableHeading {
-    font-size: 2.4em;
+    font-size: 3.2em;
+    font-family: 'Roboto', sans-serif;
+    color: #ddd;
+    background: linear-gradient(to bottom right, $heading-color, $heading-complement);
+
+  }
+  .dataTitle {
+    font-size: 1.5em;
+  }
+  .dataTitle:nth-child(1) {
+    width: 3em;
+  }
+
+  .dataTitle:nth-child(2) {
+    width: auto;
+  }
+
+  .dataTitle:nth-child(3),
+  .dataTitle:nth-child(4), {
+    width: 10em;
+  }
+
+  .rank,
+  .username,
+  .points {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 1em;
+  }
+  .rank {
+  }
+
+  .username {
+    padding: 1em 3em;
 
   }
 
+  .points {
+  }
 
+  .userRow:nth-child(even) {
+    background: $evenRow;
+
+  }
+  .userRow:hover:nth-child(even) {
+    background: $hoverEven;
+
+  }
+
+  .userRow:nth-child(odd) {
+    background: $oddRow
+
+  }
+
+  .userRow:hover:nth-child(odd) {
+    background: $hoverOdd;
+
+  }
 }
 
-table,
-th,
-td {
-  border: 1px solid black;
-}
