@@ -46,6 +46,8 @@ export default class CamperList extends Component {
         this.setState({
             list: period
         });
+        // period need to be capitalized
+        period == 'recent' ? actions.orderRecent() : actions.orderAllTime();
 
     }
 

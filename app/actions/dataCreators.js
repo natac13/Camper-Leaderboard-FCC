@@ -5,7 +5,8 @@ import {
     CREATE_LIST_RECENT,
     DATA_SUCCESS,
     DATA_FAILED,
-    ORDER_ALLTIME
+    ORDER_ALLTIME,
+    ORDER_RECENT
 } from '../constants/';
 
 /**
@@ -24,5 +25,6 @@ export const createListRecent = createAction(CREATE_LIST_RECENT);
 export const dataSuccess = createAction(DATA_SUCCESS);
 export const dataFail = createAction(DATA_FAILED);
 export const orderAllTime = createAction(ORDER_ALLTIME);
+export const orderRecent = createAction(ORDER_RECENT);
 
 
