@@ -29,7 +29,7 @@ class App extends Component {
     }
 
     componentWillMount() {
-        this.props.actions.createList(request());
+        this.props.actions.createListAllTime(request('alltime'));
 
     }
 
