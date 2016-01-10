@@ -3,7 +3,8 @@ import { createAction } from 'redux-actions';
 import {
     CREATE_LIST,
     DATA_SUCCESS,
-    DATA_FAILED
+    DATA_FAILED,
+    ORDER_ALLTIME
 } from '../constants/';
 
 /**
@@ -18,8 +19,8 @@ import {
  * @type {[type]}
  */
 export const createList = createAction(CREATE_LIST);
-
 export const dataSuccess = createAction(DATA_SUCCESS);
 export const dataFail = createAction(DATA_FAILED);
+export const orderAlltime = createAction(ORDER_ALLTIME);
 
 

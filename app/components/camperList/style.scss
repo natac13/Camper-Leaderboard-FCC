@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.leaderBoard {
+  align-self: center;
+  border-collapse: collapse;
+
+  .tableHeading {
+    font-size: 2.4em;
+
+  }
+
+
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}

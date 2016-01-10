@@ -1,16 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-
-import Table from 'material-ui/lib/table/table';
-import TableBody from 'material-ui/lib/table/table-body';
-import TableFooter from 'material-ui/lib/table/table-footer';
-import TableHeader from 'material-ui/lib/table/table-header';
-import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
-import TableRow from 'material-ui/lib/table/table-row';
-import TableRowColumn from 'material-ui/lib/table/table-row-column';
-
-
-
 /*** styling ***/
 import style from './style';
 
@@ -21,13 +10,6 @@ export default class CamperList extends Component {
         super(props);
         console.log(this.props);
         this.generateRows = this.generateRows.bind(this);
-        this.state = {
-            fixedHeader: true,
-            stripedRows: true,
-            showRowHover: false,
-            selectable: false,
-            height: '70vh'
-        };
     }
 
     componentDidUpdate() {
@@ -35,50 +17,60 @@ export default class CamperList extends Component {
 
     }
 
+
     generateRows() {
         return this.props.camperData.map((camper, index) => {
             return (
-                <TableRow>
-                    <TableRowColumn>{++index}</TableRowColumn>
-                    <TableRowColumn>{camper.get('username')}</TableRowColumn>
-                    <TableRowColumn>{camper.get('alltime')}</TableRowColumn>
-                    <TableRowColumn>{camper.get('recent')}</TableRowColumn>
-                </TableRow>
+                <tr>
+                    <td>{++index}</td>
+                    <td>{camper.get('username')}</td>
+                    <td>{camper.get('alltime')}</td>
+                    <td>{camper.get('recent')}</td>
+                </tr>
             );
         });
     }
 
+    orderNames() {
+        console.log('this should be an action to reorder the store state');
+    }
+
     render() {
+        const { actions } = this.props;
         return (
-            <div >
-                <Table
-                  height={this.state.height}
-                  fixedHeader={this.state.fixedHeader}
-                  selectable={this.state.selectable}
-                  onRowSelection={this._onRowSelection}>
+            <div className={style.wrapper}>
+                <table className={style.leaderBoard}>
+                     <caption className={style.tableHeading}>
+                        Free Code Camp's Leaderboard
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th >
+                            Rank
+                            </th>
+                            <th
+                                className={style.dataTitle}
+                                onClick={this.orderNames.bind(this)}>
+                            Camper
+                            </th>
+                            <th
+                                className={style.dataTitle}
+                                onClick={actions.orderAlltime}>
+                            Alltime - Browniepoints
+                            </th>
+                            <th
+                                className={style.dataTitle}
+                                onClick={this.orderNames.bind(this)}>
+                            Last 30 days - Browniepoints
+                            </th>
+                        </tr>
 
-                  <TableHeader enableSelectAll={this.state.enableSelectAll}>
-                    <TableRow>
-                      <TableHeaderColumn colSpan="4" tooltip="Free Code Camp's Camper Leaderboard" style={{textAlign: 'center'}}>
-                        Free Code Camp Leaderboard - alltime/recent
-                      </TableHeaderColumn>
-                    </TableRow>
-                    <TableRow>
-                      <TableHeaderColumn tooltip="Rank">Rank</TableHeaderColumn>
-                      <TableHeaderColumn tooltip="Camper's Name">Camper Name</TableHeaderColumn>
-                      <TableHeaderColumn tooltip="Alltime" >Alltime</TableHeaderColumn>
-                      <TableHeaderColumn tooltip="Recent">
-                      <button onClick={()=> console.log('button')} > recent </button>
-                      </TableHeaderColumn>
-                    </TableRow>
-                  </TableHeader>
+                    </thead>
+                    <tbody>
+                        {this.generateRows()}
+                    </tbody>
+                </table>
 
-                  <TableBody
-                    showRowHover={this.state.showRowHover}
-                    stripedRows={this.state.stripedRows}>
-                    {this.generateRows()}
-                   </TableBody>
-                </Table>
             </div>
         );
     }

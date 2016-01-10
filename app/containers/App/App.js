@@ -28,7 +28,7 @@ class App extends Component {
         super(props);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.actions.createList(request());
 
     }
