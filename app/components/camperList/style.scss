@@ -3,8 +3,8 @@ $hoverOdd: darken($oddRow, 8%);
 $evenRow: #E6D2C4;
 $hoverEven: darken($evenRow, 8%);
 
-$heading-color: #66633D;
-$heading-complement: complement($heading-color);
+$heading-color: #492c14;
+$heading-lighter: lighten($heading-color, 8%);
 
 .leaderBoard,
 .dataTitle,
@@ -17,6 +17,7 @@ $heading-complement: complement($heading-color);
 .wrapper {
   display: flex;
   justify-content: space-around;
+  margin-top: 2em;
 }
 
 .leaderBoard {
@@ -30,7 +31,7 @@ $heading-complement: complement($heading-color);
     font-size: 3.2em;
     font-family: 'Roboto', sans-serif;
     color: #ddd;
-    background: linear-gradient(to bottom right, $heading-color, $heading-complement);
+    background: linear-gradient(to bottom, $heading-color, $heading-lighter);
 
   }
   .dataTitle {
@@ -46,7 +47,8 @@ $heading-complement: complement($heading-color);
 
   .dataTitle:nth-child(3),
   .dataTitle:nth-child(4), {
-    width: 10em;
+    word-wrap: wrap;
+    width: 13em;
   }
 
   .rank,

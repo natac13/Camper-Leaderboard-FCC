@@ -1,3 +1,8 @@
+$header: #1E312A;
+$code: #4A1919;
+$codeHover: lighten($code, 15%);
+$shade: #303030;
+
 .wrapper {
   display: flex;
   flex-flow: column;
@@ -6,9 +11,29 @@
 }
 
 .author {
-
+  color: $header;
+  font-size: 2.3em;
+  font-weight: normal;
+  borer-bottom: 2px solid
 }
 
-.code {
 
+
+.code {
+  text-decoration: none;
+  color: $code;
+  transition: .4s ease-in;
+  border: 1px solid $code;
+  border-radius: 50px;
+  padding: 10px;
+  box-shadow: 0 0 15px $shade;
+
+
+  &:hover {
+    color: $codeHover;
+    box-shadow: 0 0 5px $shade;
+
+
+
+  }
 }

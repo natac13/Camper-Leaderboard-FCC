@@ -48,8 +48,15 @@ class App extends Component {
         return (
             <div className={style.wrapper}>
                 <header>
-                    <h1 className={style.author}> Create By: Natac </h1>
-                    <h3 className={style.code}> Source Code </h3>
+                    <h1 className={style.author}>
+                        Create By: Natac -> <a
+                        href="https://github.com/natac13/Camper-Leaderboard-FCC"
+                        className={style.code}
+                        target="_blank"
+                        title="View the code making this work!">
+                        Source Code </a>
+                    </h1>
+
                 </header>
                 <CamperList {...this.props} />
             </div>

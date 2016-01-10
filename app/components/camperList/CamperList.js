@@ -51,6 +51,13 @@ export default class CamperList extends Component {
     }
 
     render() {
+        const { camperData } = this.props;
+        const allTimeIcon = camperData.get('allTimeOrder') =='descending' ?
+            <i className="fa fa-sort-desc" /> :
+            <i className="fa fa-sort-asc" />;
+        const recentIcon = camperData.get('recentOrder') == 'descending' ?
+            <i className="fa fa-sort-desc" /> :
+            <i className="fa fa-sort-asc" />;
         return (
             <div className={style.wrapper}>
                 <table className={style.leaderBoard}>
@@ -70,12 +77,12 @@ export default class CamperList extends Component {
                             <th
                                 className={style.dataTitle}
                                 onClick={() => this.orderList('allTime')}>
-                                Alltime - Browniepoints
+                                Points - Alltime {allTimeIcon}
                             </th>
                             <th
                                 className={style.dataTitle}
                                 onClick={() => this.orderList('recent')}>
-                                Last 30 days - Browniepoints
+                                Points - Last 30 days {recentIcon}
                             </th>
                         </tr>
 
